@@ -8,7 +8,7 @@ import java.util.Iterator;
  * @Date: Created in 15:47 2017/10/16
  */
 public class MyArrayList<AnyType> implements Iterable<AnyType>{
-    private static final int DEFAULT_CAPACITY = 5;
+    private static final int DEFAULT_CAPACITY = 10;
     private int theSize;
     private AnyType [] theItems;
 

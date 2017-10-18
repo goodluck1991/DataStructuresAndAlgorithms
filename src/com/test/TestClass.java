@@ -1,10 +1,10 @@
 package com.test;
 
 import com.guojun.jiao.chapter3.MyArrayList;
+import com.guojun.jiao.chapter3.MyLinkedList;
+import com.sun.xml.internal.ws.api.WSService;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 /**
  * @Author: JiaoGuojun
@@ -14,6 +14,57 @@ import java.util.List;
 public class TestClass {
     public static void main(String[] args) {
 
+//        myArrayListTest();
+//        array();
+        myLinkedList();
+
+
+    }
+
+
+    public static String arr2String(Object[] arr){
+        StringBuffer sb = new StringBuffer();
+        sb.append("[");
+        for (Object obj:arr){
+            sb.append(obj.toString()).append(",");
+        }
+        return sb.substring(0,sb.lastIndexOf(","))+"]";
+    }
+
+    public static String toString(MyLinkedList myLinkedList){
+        Iterator<String> iterator = myLinkedList.iterator();
+        StringBuffer sb = new StringBuffer();
+        sb.append("[");
+        while(iterator.hasNext()){
+            sb.append(iterator.next());
+            sb.append(",");
+        }
+        return sb.substring(0,sb.lastIndexOf(","))+"]";
+    }
+
+    public static void myLinkedList(){
+        MyLinkedList<String> myLinkedList = new MyLinkedList<String>();
+        System.out.println(myLinkedList.size());
+        myLinkedList.add("1");
+        myLinkedList.add("2");
+        myLinkedList.add("3");
+        System.out.println(toString(myLinkedList));
+    }
+
+    public static void array(){
+        String [] arr1 = new String[]{"1","2","3"};
+        String [] arr2 = {"a","b","c"};
+        System.out.println("arr1:"+arr2String(arr1));
+        System.out.println("arr2:"+arr2String(arr2));
+        System.out.println("arr1:"+arr1.toString()+"......"+"arr2:"+arr2.toString());
+        arr1 = arr2;
+        arr1[0]="1";
+        System.out.println("arr1:"+arr2String(arr1));
+        System.out.println("arr2:"+arr2String(arr2));
+        System.out.println("arr1:"+arr1.toString()+"......"+"arr2:"+arr2.toString());
+    }
+
+    public static void myArrayListTest(){
         List<String> arrayList = new ArrayList<String>();
         arrayList.add("1");
         arrayList.add("2");
@@ -39,25 +90,12 @@ public class TestClass {
         myArrayList.add("i");
         System.out.println(myArrayList.size());
         System.out.println(myArrayList.get(4));
-        System.out.println(toString(myArrayList));
+       // System.out.println(toString(myArrayList));
         System.out.println(myArrayList.isEmpty());
         myArrayList.set(4,"f");
-        System.out.println(toString(myArrayList));
+        //System.out.println(toString(myArrayList));
         myArrayList.clear();
         System.out.println(myArrayList.size());
         System.out.println(myArrayList.isEmpty());
-
-
-    }
-
-    public static String toString(MyArrayList myArrayList){
-        Iterator<String> iterator = myArrayList.iterator();
-        StringBuffer sb = new StringBuffer();
-        sb.append("[");
-        while(iterator.hasNext()){
-            sb.append(iterator.next());
-            sb.append(",");
-        }
-        return sb.substring(0,sb.lastIndexOf(","))+"]";
     }
 }
